@@ -42,4 +42,5 @@ parts:
   chapters:
   - file: Complementaria1.ipynb
   - file: Complementaria2.ipynb
+  - file: Complementaria3.ipynb
 
