@@ -1,4 +1,4 @@
-# <span style="color:#ff653b">Procesos estocásticos</span>
+# <span style="color:#240046">Procesos estocásticos</span>
 
 En este capítulo abordaremos el concepto básico de proceso estocástico,
 concepto usado como instrumento para diseñar modelos probabilísticos de
@@ -10,7 +10,7 @@ para su caracterización. Finalmente, ilustramos una aproximación al
 concepto de memoria asociado a un proceso estocástico, así como la
 definición de homogeneidad en el tiempo.
 
-## <span style="color:#cb385d">Introducción </span>
+## <span style="color:#240046">Introducción </span>
 
 Consideremos un fenómeno aleatorio, o un sistema con aspectos de
 aleatoriedad, y se contempla un elemento observable del fenómeno que
@@ -27,7 +27,7 @@ pertenece al conjunto $S$ (definido anteriormente), y en realidad es
 predecible sólo en términos probabilísticos, es decir $X_{n}$ es una
 variable aleatoria por cada valor de $n$.
 
-### <span style="color:#e85650"><strong>Ejemplo 1 </strong></span>
+### <span style="color:#240046"><strong>Ejemplo 1 </strong></span>
 ```{admonition} Ejemplo 1
 :class: suggestion
 
@@ -75,7 +75,7 @@ Ejemplo 1, si se observa la cantidad total de dinero apostado por todos
 los jugadores en cada ronda, denotada como $T_{n}$, habríamos definido
 otro proceso estocástico $\{ T_{n},n \geq 0\}$ .
 
-### <span style="color:#e85650"><strong>Ejemplo 2 </strong></span>
+### <span style="color:#240046"><strong>Ejemplo 2 </strong></span>
 ```{admonition} Ejemplo 2
 :class: suggestion
 
@@ -149,7 +149,7 @@ modelado, por lo cual es esencial tener en cuenta el objetivo del
 estudio del sistema.
  
 
-## <span style="color:#cb385d">Caracterización de los procesos estocásticos  </span>
+## <span style="color:#240046">Caracterización de los procesos estocásticos  </span>
  
 Con el objetivo de proporcionar elementos útiles para el estudio de
 sistemas estocásticos que evolucionan en el tiempo, en esta sección
@@ -233,7 +233,7 @@ casos específicos dicha caracterización puede simplificarse
 considerablemente.
  
 
-## <span style="color:#cb385d">Clasificación de los procesos estocásticos   </span>
+## <span style="color:#240046">Clasificación de los procesos estocásticos   </span>
 
  
 Una clasificación muy general de los procesos estocásticos es aquella
@@ -387,7 +387,7 @@ tiene que ser suficientemente detallada para que especifique exactamente
 la selección de la secuencia de índices.
 
 
-## <span style="color:#cb385d">Dependencias entre observaciones en los procesos estocásticos </span>
+## <span style="color:#240046">Dependencias entre observaciones en los procesos estocásticos </span>
 
 Considere el siguiente fenómeno aleatorio: se lanza un dado, y se define
 como variable de interés la cara del dado $(D)$. Si repetimos el
@@ -442,7 +442,7 @@ tiempo atrás debería afectar de manera poco significativa el precio de
 mercado presente.
 
 
-## <span style="color:#cb385d">Homogeneidad de un proceso estocástico </span>
+## <span style="color:#240046">Homogeneidad de un proceso estocástico </span>
 
 
 Consideremos el proceso estocástico con espacio discreto y en tiempo
