@@ -1,4 +1,4 @@
-# <span style="color:#ffa600; font-weight: bold;">Bienvenido al curso de Modelos Probabilísticos</span>
+# <span style="color:#10002B; font-weight: bold;">Bienvenido al curso de Modelos Probabilísticos</span>
 
 Este es el libro oficial del curso de Modelos Probabilísticos que el equipo hemos creado para ti; esperamos que lo disfrutes y te sea de gran ayuda durante el curso. Recuerda que es muy importante realizar las lecturas asignadas a cada semana, ya que de ello depende la correcta comprensión de los temas. 
 
@@ -14,6 +14,7 @@ Despliega el contenido:
 ```{dropdown} Módulos: Complementarias
 - <i class="fas fa-concierge-bell" style="color:#ff6361"></i> [Complementaria 1: Introducción a Python](Complementaria1.ipynb)
 - <i class="fas fa-concierge-bell" style="color:#ff6361"></i> [Complementaria 2: Álgebra Lineal en Python](Complementaria2.ipynb)
+- <i class="fas fa-concierge-bell" style="color:#e30b0b"></i> [Complementaria 2: Álgebra Lineal en Python](Complementaria3.ipynb)
 ```
 
 ```{admonition} Haz click acá!

@@ -1,4 +1,4 @@
-﻿# <span style="color:#ff653b">Distribuciones de probabilidad</span>
+﻿# <span style="color:#240046">Distribuciones de probabilidad</span>
 
 En el proceso de modelamiento de sistemas que presentan un comportamiento aleatorio utilizamos dos familias de variables aleatorias para modelar la probabilidad de ocurrencia de los eventos. Estas son las variables aleatorias continuas y las variables aleatorias discretas. 
 
