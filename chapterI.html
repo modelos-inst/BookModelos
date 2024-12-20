@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Procesos estocásticos &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapterI';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenido al curso de Modelos Probabilísticos.
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. Procesos estocásticos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. Procesos de Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Análisis transitorio de cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. Clasificación de estados</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">6. Probabilidades en estado estable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Cadenas embebidas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">8. Análisis de tiempos promedios</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter9.html">9. Cadenas absorbentes: Tiempos antes de la absorción y probabilidades de absorción</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter10.html">10. Ley de Little</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter11.html">11. Procesos de nacimiento y muerte</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 12</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter12.html">12. Teoría de Colas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter13.html">13. Redes de Jackson</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter14.html">14. Costos en cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 14</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter15.html">15. Procesos de decisión en el tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter16.html">16. Principio de Optimalidad y Ecuaciones de Bellman</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter17.html">17. Programación Dinámica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 16</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter18.html">18. Procesos de Decisión Markovianos</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FchapterI.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapterI.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Procesos estocásticos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">1.1 Introducción:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracterizacion-de-los-procesos-estocasticos">1.2 Caracterización de los procesos estocásticos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-los-procesos-estocasticos">1.3 Clasificación de los procesos estocásticos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="procesos-estocasticos">
+<h1>1. Procesos estocásticos<a class="headerlink" href="#procesos-estocasticos" title="Permalink to this heading">#</a></h1>
+<div style="text-align: justify">
+En este capítulo abordaremos el concepto básico de proceso estocástico, concepto usado como instrumento para diseñar modelos probabilísticos de sistemas, cuyo estado está sujeto a evolucionar en el transcurso del tiempo. El capítulo inicia con una breve introducción y ejemplos de procesos estocásticos. Seguido, presentaremos una clasificación de los diferentes tipos de procesos estocásticos y algunos elementos útiles para su caracterización. Finalmente, ilustramos una aproximación al concepto de memoria asociado a un proceso estocástico, así como la definición de homogeneidad en el tiempo. 
+<div/>
+<section id="introduccion">
+<h2>1.1 Introducción:<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h2>
+<div style="text-align: justify">
+Consideremos un fenómeno aleatorio, o un sistema con aspectos de aleatoriedad, y se contempla un elemento observable del fenómeno que pueda caracterizarse de manera probabilística. Supongamos que los valores posibles de la bservación conforman un conjunto S de tipo discreto (finito o contable). Si se observa ese mismo fenómeno aleatorio de forma reiterada, por ejemplo, cada minuto durante un cierto intervalo de tiempo, se obtiene una secuencia ordenada de observaciones en el tiempo, que podemos denotar como $(X_n, n>=0)$. Esta secuencia ordenada es un ejemplo de proceso estocástico. El resultado de cada observación pertenece al conjunto S  (definido anteriormente), y en realidad es predecible sólo en términos probabilísticos, es decir Xn  es una variable aleatoria por cada valor de n.
+<div/>
+<section id="ejemplo">
+<h3>Ejemplo:<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Fenómeno aleatorio: Juego de póker en un casino durante un número de rondas. 
+
+- Variable de interés: Nos enfocamos en la cantidad Dn de dinero de un jugador particular. 
+
+- Conjunto de observación: Observamos dicha cantidad después de cada ronda n del juego
+</pre></div>
+</div>
+<p>No se puede predecir con exactitud la cantidad de dinero del jugador, pero sí es posible determinar la probabilidad de que sea igual a un determinado monto. Es decir, es posible realizar una predicción de dicha cantidad en términos probabilísticos. Si denotamos con <span class="math notranslate nohighlight">\(D_n\)</span> la cantidad de dinero que el jugador posee al terminar la ronda <span class="math notranslate nohighlight">\(n\)</span>, siendo
+<span class="math notranslate nohighlight">\(D_0\)</span> la cantidad inicial antes de empezar a jugar, entonces <span class="math notranslate nohighlight">\((Dn,n≥0)\)</span> es un proceso estocástico.</p>
+<p>No puede faltar en la definición de un proceso estocástico la especificación de la variable de estado. En el ejemplo del caso anterior:<br />
+<span class="math notranslate nohighlight">\(D_n=\)</span>Cantidad de dinero que el jugador posee al terminar la ronda n  del juego</p>
+<p>Es importante observar que a partir del mismo fenómeno aleatorio se pueden definir múltiples procesos estocásticos, por ejemplo, al variar el elemento observable o la temporalidad de observación. En el caso del Ejemplo 1, si se observa la cantidad total de dinero apostado por todos los jugadores en cada ronda, denotada como <span class="math notranslate nohighlight">\(T_n\)</span>, habríamos definido otro proceso estocástico <span class="math notranslate nohighlight">\((T_n,n≥0)\)</span>.</p>
+</section>
+<section id="id1">
+<h3>Ejemplo:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Fenómeno aleatorio: Llegada de carros a un parqueadero. 
+
+- Variable de interés: Se busca medir el número de carros en el sistema (parqueadero). 
+
+- Conjunto de observación: La observación se realiza cada vez que un carro llega al parqueadero. 
+</pre></div>
+</div>
+<p>En este caso la variable de estado se puede definir como:</p>
+<p><span class="math notranslate nohighlight">\(C_n\)</span>=Número de carros en el parqueadero en el momento inmediatamente después de la llegada del carro n-ésimo
+Para el ejemplo anterior, otra variable de interés podría ser el tiempo que pasa entre llegadas consecutivas al parqueadero. Por ejemplo, consideremos la siguiente variable:</p>
+<p><span class="math notranslate nohighlight">\(I_n\)</span>= Tiempo entre la llegada del carro n -ésimo y el carro n+1 -ésimo al parqueadero</p>
+<p>Esta secuencia de observaciones definiría un proceso estocástico <span class="math notranslate nohighlight">\((I_n, n&gt;=0)\)</span>, donde los posibles valores que toma la variable son tiempos, es decir, números reales no-negativos.</p>
+<p>También, es posible observar un sistema en tiempo continuo, es decir en cada instante de tiempo, sin precisar la secuencia de instantes en la cual se realiza el muestreo (observación) de la variable de interés. En el caso del Ejemplo 2 podríamos por ejemplo definir:</p>
+<p><span class="math notranslate nohighlight">\(C(t)=\)</span>Número de carros en el parqueadero en el instante de tiempo t</p>
+<p>En este caso nos interesa observar esta variable continuamente, en todo tiempo <span class="math notranslate nohighlight">\(t≥0\)</span>, y no solo en momentos discretos del tiempo. El conjunto de observaciones sería <span class="math notranslate nohighlight">\((C(t),t≥0)\)</span>, que constituye un proceso estocástico que evoluciona en tiempo continuo. Las definiciones de la variable de interés y la temporalidad de observación hacen parte del proceso de modelado de un sistema. Si bien, en algunos casos tales definiciones pueden ser obviamente determinadas por la naturaleza del sistema, en general existen múltiples opciones de modelado, por lo cual es esencial tener en cuenta el objetivo del estudio del sistema.</p>
+</section>
+</section>
+<section id="caracterizacion-de-los-procesos-estocasticos">
+<h2>1.2 Caracterización de los procesos estocásticos<a class="headerlink" href="#caracterizacion-de-los-procesos-estocasticos" title="Permalink to this heading">#</a></h2>
+<p>Con el objetivo de proporcionar elementos útiles para el estudio de sistemas estocásticos que evolucionan en el tiempo, en esta sección plantearemos una formalización y una posible clasificación de los procesos estocásticos. Una definición muy abstracta de proceso estocástico afirma que: “Un proceso estocástico es una familia indexada de variables aleatorias”, la cual se comprende como mayor facilidad si se substituyen las palabras familia indexada por secuencia ordenada. Como tal, los procesos estocásticos son objeto de estudio teórico de las matemáticas y de la probabilidad aplicada. Sin embargo, sus áreas de aplicación son múltiples en las ciencias aplicadas como la física, la ingeniería, medicina e incluso en ciencias sociales, ya que se prestan para el modelado de sistemas muy diferentes con el objetivo de medir su rendimiento y tomar decisiones sin influir directamente en él.</p>
+<p>La palabra estocástico fue introducida en tiempos bastante recientes por L. Bortkiewcz, quien la utilizó en 1917 para definir fenómenos que incluyen aspectos probabilísticos. Por otra parte, la terminología proceso estocástico, así como la entendemos hoy fue presentada por el matemático ruso A. Kolmogorov en 1932. La definición de un proceso estocástico deja libertad en cuanto a la selección de la variable de interés y a la frecuencia de observación; como consecuencia, existen muchos tipos de procesos estocásticos. Entre los más conocidos, se pueden encontrar procesos de conteo, movimientos Brownianos, cadenas de Markov, procesos de Martingala, procesos de Levy, procesos Gaussianos, entre otros. Consideramos una colección ordenada de variables aleatorias, es decir un proceso estocástico, y definimos la siguiente terminología; llamaremos estado del proceso estocástico a un valor particular que puede tomar la variable que se observa, y espacio de estados al conjunto de todos los posibles estados de la variable, lo cual se denota usualmente con S.</p>
+<p>Como se mencionó, en un proceso estocástico solo conocemos el estado del sistema de forma probabilística. Así, estamos interesados en conocer la distribución de probabilidad de la variable de interés en un momento del tiempo. Por ejemplo, para el proceso estocástico <span class="math notranslate nohighlight">\((X_n,n&gt;=0)\)</span>, es pertinente preguntar cuál es la probabilidad <span class="math notranslate nohighlight">\(P[X_5=x]\)</span>, es decir, la probabilidad de que en el momento n=5 de observación la variable de estado <span class="math notranslate nohighlight">\(X_5\)</span> tome el valor x, donde x  es un valor posible del estado del proceso, es decir x 𝜖 S.<br />
+También podemos estar interesados en la probabilidad de que esta variable en el momento n=5 tome valores menores o iguales a x, es decir <span class="math notranslate nohighlight">\(P[X5≤x]\)</span>. Por ejemplo, la probabilidad de que el monto total de dinero apostado en la quinta ronda del juego de póker sea 35,000 pesos, <span class="math notranslate nohighlight">\(P[T5=35,000]\)</span>, o que sea a lo sumo 20,000 pesos, <span class="math notranslate nohighlight">\(P[T5≤20,000]\)</span>.</p>
+<p>Dada la disponibilidad de múltiples observaciones en un proceso estocástico, surgen otro tipo de preguntas interesantes, cuya respuesta puede proporcionar información útil para el análisis de los sistemas que se quieren estudiar a través del modelado. Por ejemplo, la probabilidad de que el número de carros en el parqueadero a las 9 de la mañana sea 10, dado que a las 8 de la mañana era igual a 5. Esta probabilidad condicional se describiría en notación matemática como <span class="math notranslate nohighlight">\(P[C(9AM)=10|C(8AM)=5]\)</span>.<br />
+También pueden existir preguntas interesantes que involucran las distribuciones conjuntas de un proceso estocástico. Por ejemplo, si estuviéramos interesados en la probabilidad de que los primeros tres tiempos entre llegadas al parqueadero fuesen menores a una cantidad fija 𝜏, tendríamos que calcular la siguiente probabilidad:<br />
+<span class="math notranslate nohighlight">\(P[I1&lt;𝜏, I2&lt;𝜏,I3&lt;𝜏]\)</span>.<br />
+En general, la caracterización de un proceso estocástico requiere información sobre las distribuciones de probabilidad condicionales, marginales y conjuntas de las variables aleatorias que conforman el proceso estocástico. Como veremos en el capítulo siguiente, en algunos casos específicos dicha caracterización puede simplificarse considerablemente.</p>
+</section>
+<section id="clasificacion-de-los-procesos-estocasticos">
+<h2>1.3 Clasificación de los procesos estocásticos<a class="headerlink" href="#clasificacion-de-los-procesos-estocasticos" title="Permalink to this heading">#</a></h2>
+<p>Una clasificación muy general de los procesos estocásticos es aquella que considera las posibles tipologías de dos características claves del proceso. La primera es el espacio de estados S, el cual puede ser discreto o continuo. La segunda es el conjunto de índices, referido al conjunto que define las observaciones del fenómeno aleatorio al que denotaremos como I, el cual puede ser discreto o continuo.</p>
+<p>Al definir una variable de interés X  que toma valores en un espacio de estados S, y la cual observamos en instantes de tiempo definidos por un conjunto de índices I, tendremos una primera clasificación del proceso estocástico. Si el espacio de estados S  es un conjunto discreto/continuo, diremos que el proceso estocástico tiene espacio discreto/continuo. Si el conjunto de índices I  es un conjunto discreto/continuo, diremos que el proceso estocástico es en tiempo discreto/continuo.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">1.1 Introducción:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracterizacion-de-los-procesos-estocasticos">1.2 Caracterización de los procesos estocásticos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-los-procesos-estocasticos">1.3 Clasificación de los procesos estocásticos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

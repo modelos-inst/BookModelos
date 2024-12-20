@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Ley de Little &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter10';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Procesos de nacimiento y muerte" href="chapter11.html" />
+    <link rel="prev" title="9. Cadenas absorbentes: Tiempos antes de la absorción y probabilidades de absorción" href="chapter9.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenido al curso de Modelos Probabilísticos.
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">1. Procesos estocásticos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. Procesos de Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Análisis transitorio de cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. Clasificación de estados</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">6. Probabilidades en estado estable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Cadenas embebidas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">8. Análisis de tiempos promedios</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter9.html">9. Cadenas absorbentes: Tiempos antes de la absorción y probabilidades de absorción</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 10</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Ley de Little</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter11.html">11. Procesos de nacimiento y muerte</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 12</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter12.html">12. Teoría de Colas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter13.html">13. Redes de Jackson</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter14.html">14. Costos en cadenas de Markov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 14</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter15.html">15. Procesos de decisión en el tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter16.html">16. Principio de Optimalidad y Ecuaciones de Bellman</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter17.html">17. Programación Dinámica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semana 16</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter18.html">18. Procesos de Decisión Markovianos</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter10.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter10.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ley de Little</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">10.1. Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-aplicacion">10.2. Ejemplos de aplicación</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ley-de-little">
+<h1><span class="section-number">10. </span>Ley de Little<a class="headerlink" href="#ley-de-little" title="Permalink to this heading">#</a></h1>
+<p>Este breve capítulo introduce la Ley de Little, describe su generalidad
+y presenta algunas aplicaciones relevantes para los análisis de sistemas
+que alcanzan un estado estacionario.</p>
+<section id="introduccion">
+<h2><span class="section-number">10.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h2>
+<p>El resultado que se conoce como Ley de Little (Little’s law, en inglés),
+fue propuesto en 1954 por John Dutton Conant Little, quien es Profesor
+del Massachusetts Institute of Technology (hoy tiene 94 años). El
+resultado de Little es una formula muy sencilla que relaciona el número
+promedio de entidades en un sistema, con la tasa de llegada y el tiempo
+promedio de permanencia de los usuarios.</p>
+<p>Si denotamos con <span class="math notranslate nohighlight">\(L\)</span> el número promedio de entidades en el sistema, con
+<span class="math notranslate nohighlight">\(\lambda\)</span> la tasa efectiva de entrada de las entidades al sistema, y
+finalmente con <span class="math notranslate nohighlight">\(W\)</span> el tiempo promedio que cada entidad pasa en el
+sistema, la Ley de Little afirma que:</p>
+<div class="math notranslate nohighlight">
+\[L = \ \lambda \bullet W.\]</div>
+<p>Es importante observar que todas las cantidades mencionadas se entienden
+evaluadas en el <strong>estado estacionario (estable)</strong> de un sistema. La Ley
+de Little será particularmente útil para analizar sistemas para los
+cuales se conocen, o se pueden calcular fácilmente, dos de las tres
+cantidades<span class="math notranslate nohighlight">\(L,\ \lambda\ o\ W\)</span> <u><strong>Es incorrecto aplicar la Ley de Little
+a un sistema que no se encuentre en estado estacionario</strong>.</u></p>
+<p>El resultado de Little es muy general, aplica para sistemas de cualquier
+naturaleza y es independiente de las distribuciones, del tipo de proceso
+de llegada, y/o del proceso específico que se realiza dentro del
+sistema. Por su generalidad, tiene estatus de Ley, lo cual en las
+matemáticas y en la física es reservado a resultados que expresan
+principios generales de los sistemas; por ejemplo, la Ley de Gravitación
+Universal de Newton, o las Leyes de la termodinámica.</p>
+<p>Es también remarcable que la Ley de Little puede ser aplicada en el
+mismo sistema a diferentes niveles de abstracción, proporcionando
+diferentes tipos de resultados.</p>
+<p>Para aplicar la Ley de Little, es necesario conocer dos de las
+cantidades que la formula relaciona, y de manera sencilla se obtiene la
+tercera.</p>
+</section>
+<section id="ejemplos-de-aplicacion">
+<h2><span class="section-number">10.2. </span>Ejemplos de aplicación<a class="headerlink" href="#ejemplos-de-aplicacion" title="Permalink to this heading">#</a></h2>
+<p>Consideremos un sistema de producción que procesa chasis de carros. Al
+proceso entran 25 chasis por hora y el tiempo promedio de procesamiento
+de cada chasis es de 21 minutos, tal como se observa en la
+Ilustración 1. ¿Es posible a través de la Ley de Little obtener el
+número promedio de chasis en la línea de producción?</p>
+<p><img alt="" src="media/image1.png" />{width=”3.625in” height=”0.7443985126859143in”}</p>
+<p><img alt="Ilustración 1" src="_images/little1.png" /></p>
+<p>La respuesta es sí. Conocemos la tasa de llegada de los chasis, la cuál
+es <span class="math notranslate nohighlight">\(\lambda = 25\ \text{horas}^{- 1}\)</span>, y también conocemos el tiempo
+promedio que cada chasis permanece en el sistema de producción, lo cual
+denotamos con <span class="math notranslate nohighlight">\(W\)</span>, siendo <span class="math notranslate nohighlight">\(W = 21\ \text{min} = 0.35\ \text{horas}\)</span>. Entonces podemos calcular el
+número promedio de chasis que habrá en estado estable en la línea de
+producción, es decir <span class="math notranslate nohighlight">\(L\)</span>, utilizando directamente la fórmula de Little:</p>
+<div class="math notranslate nohighlight">
+\[L = \ \lambda \bullet W = 25\frac{\ \text{chasis}}{\text{hora}} \bullet 0.35\ \text{horas} = 8.75\ \text{chasis.}\]</div>
+<p>Observamos que no se necesita conocer la estructura interna de la línea
+de producción para contestar la pregunta.</p>
+<p>Como se mencionó en la sección anterior, también es posible estudiar el
+sistema en un nivel de abstracción más detallado. Por esta razón,
+suponga que la línea de producción de los chasis tiene una parte
+robotizada y una parte manual. En la parte manual se reprocesan en
+promedio una décima parte de los chasis, después de que han pasado por
+la línea robotizada, para corregir imperfecciones de soldadura, tal como
+se observa en la Ilustración 2. Adicionalmente, en estado estable, hay
+<span class="math notranslate nohighlight">\(1.25\ \text{chasis}\)</span> en promedio que están siendo procesados por los
+operarios en la parte manual de la línea. ¿Cuál es el tiempo promedio de
+procesamiento en la parte robotizada?</p>
+<p><img alt="Ilustración 2" src="_images/little2.png" /></p>
+<p>Es posible calcular, primero, el número promedio de chasis en la parte
+robotizada, considerando la cantidad total en la línea de producción
+encontrada anteriormente. De este modo, se tiene que la cantidad en la
+parte robotizada es de <span class="math notranslate nohighlight">\(L - 1.25 = 7.5\ \text{chasis}\)</span>, y se aplica
+nuevamente la Ley de Little, pero esta vez al subsistema de la parte
+robotizada. Si en el subsistema que ahora se considera hay en promedio
+en estado estable <span class="math notranslate nohighlight">\(L_{1} = 7.5\ \text{chasis}\)</span>, y la tasa de llegada es
+<span class="math notranslate nohighlight">\(\lambda = 25\frac{\text{chasis}}{\text{hora}} = 0.416\ \frac{\text{chasis}}{\text{minuto}}\)</span>,
+entonces el tiempo promedio en el subsistema será:</p>
+<div class="math notranslate nohighlight">
+\[W_{1} = \frac{L_{1}}{\lambda} = \frac{7.5}{0.416} = 18\ \text{minutos.}\]</div>
+<p>Ahora, calcule el tiempo promedio que permanece un chasis en la estación
+manual del sistema. Siempre, con la Ley de Little, podemos determinar
+este tiempo ya que conocemos la tasa de llegada al subsistema de
+reprocesamiento manual, así como el número promedio de chasis en el
+subsistema. Entonces, con la Ley de Little hallamos el tiempo de
+permanencia en el subsistema:</p>
+<div class="math notranslate nohighlight">
+\[W_{2} = \frac{1.25}{0.1 \cdot \lambda_{\ }} = \frac{1.25}{0.1 \cdot 0.416\ } = \frac{1.25}{0.0416\ } = 30\ \text{minutos.}\]</div>
+<p>Obteniendo que el tiempo promedio que un chasis permanece en la estación
+de reprocesamiento manual es de <span class="math notranslate nohighlight">\(30\ \text{minutos}\)</span>.</p>
+<p>Adicionalmente, la Ley de Little nos facilita el cálculo de medidas de
+desempeño, como el número promedio de entidades en fila y el número
+promedio de entidades en servicio, los cuales se denotan como <span class="math notranslate nohighlight">\(L_{q}\)</span> y
+<span class="math notranslate nohighlight">\(L_{s}\)</span>, respectivamente. De la misma manera, también es posible
+calcular el tiempo promedio que una entidad permanece en fila y el
+tiempo promedio que una entidad permanece en servicio, siendo estos
+comúnmente representados como <span class="math notranslate nohighlight">\(W_{q}\)</span> y <span class="math notranslate nohighlight">\(W_{s}\)</span>, respectivamente. A
+continuación, se presenta la Ley de Little para estos casos
+particulares:</p>
+<div class="math notranslate nohighlight">
+\[L_{q} = \ \lambda \bullet W_{q}\]</div>
+<div class="math notranslate nohighlight">
+\[L_{s} = \ \lambda \bullet W_{s}\]</div>
+<div class="math notranslate nohighlight">
+\[L = \ L_{q} + L_{s}\]</div>
+<div class="math notranslate nohighlight">
+\[W = \ W_{q} + W_{s}\]</div>
+<p>De las anteriores expresiones, se puede intuir que el número total de
+entidades promedio en estado estacionario será la suma del número de
+entidades promedio en cola y en servicio. La misma intuición se da para
+el tiempo total que una entidad permanece en el sistema, donde este
+tiempo será igual a la suma de los tiempos que una entidad permanece en
+cola y en servicio.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter9.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Cadenas absorbentes: Tiempos antes de la absorción y probabilidades de absorción</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Procesos de nacimiento y muerte</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">10.1. Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-aplicacion">10.2. Ejemplos de aplicación</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
